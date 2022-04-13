@@ -30,16 +30,13 @@ def readImagePgm(file_name):
     density = int(l[0])
     del(l[0])
 
-    matrix = []
-
-    for x in range(lx):
-        row = []
-        for y in range(ly):        
-            row.append(int(l[0]))
-            del(l[0])
-        matrix.append(row)
+    for i in range(0,len(l)):
+        l[i] = int(l[i]) 
+    l= np.array(l)       
+    matrix = np.matrix(l.reshape((640, 480)))
     file.close()
     return matrix
+print(np.shape(readImagePgm('pic1.pgm')))
 
 def writeImagePgm(m, lx, ly, density):
     file = open("output.pgm", "w")
@@ -52,4 +49,7 @@ def writeImagePgm(m, lx, ly, density):
             file.write(f'{m[x][y]} ')
     file.close()
     
-writeImagePgm(readImagePgm('pic1.pgm'), 640, 480, 255)
+# writeImagePgm(readImagePgm('pic1.pgm'), 640, 480, 255)
+
+# def mean_stdev(matrix):
+#     mean = np.
