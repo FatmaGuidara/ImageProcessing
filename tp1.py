@@ -38,7 +38,18 @@ def readImagePgm(file_name):
             row.append(int(l[0]))
             del(l[0])
         matrix.append(row)
+    file.close()
     return matrix
 
-print(np.shape(readImagePgm('pic1.pgm')))
-
+def writeImagePgm(m, lx, ly, density):
+    file = open("output.pgm", "w")
+    file.write("P2")
+    file.write(f'\n{lx}')
+    file.write(f' {ly}')
+    file.write(f'\n{density}\n')
+    for x in range(lx):
+        for y in range(ly):
+            file.write(f'{m[x][y]} ')
+    file.close()
+    
+writeImagePgm(readImagePgm('pic1.pgm'), 640, 480, 255)
