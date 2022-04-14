@@ -33,6 +33,16 @@ noise = noise(matrix)
 # writeImagePgm(filer_median(noise), 640, 480, 255, 'median_filtered_pic1.pgm')
 
 # writeImagePgm(filer_moy(matrix), 640, 480, 255, 'moy_filtered_pic1_without_noise.pgm')
-writeImagePgm(filer_median(matrix), 640, 480, 255, 'median_filtered_pic1_without_noise.pgm')
+# writeImagePgm(filer_median(matrix), 640, 480, 255, 'median_filtered_pic1_without_noise.pgm')
+
+print(signal_to_Noise_Ratio(matrix,filer_median(noise)))
+print(signal_to_Noise_Ratio(matrix,filer_moy(noise)))
+
+
+
+
+
+
+
 
 # %%

@@ -1,5 +1,7 @@
+from ast import Return
 import numpy as np
 import random
+import math
 
 def noise(matrix):
     matrix = np.matrix(matrix)
@@ -53,4 +55,21 @@ def filer_median(matrix):
     new_unpadded_matrix = np.delete(new_unpadded_matrix, 0, 0)
     new_unpadded_matrix = np.delete(new_unpadded_matrix, 0, 1)
     return new_unpadded_matrix
+
+def signal_to_Noise_Ratio(matrix, filtered_matrix):
+    matrix = np.matrix(matrix)
+    filtered_matrix = np.matrix(filtered_matrix)
+    mean = matrix.mean()
+    S = 0
+    u = matrix-mean
+    B = 0
+    v = filtered_matrix - matrix
+    lx,ly = np.shape(matrix)
+    for x in range(lx):
+        for y in range(ly):
+            S = S + (u[x,y]*u[x,y])
+            B = B + (v[x,y]*v[x,y])
+            
+    return math.sqrt(S/B)
+    
 
