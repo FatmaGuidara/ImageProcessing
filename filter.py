@@ -46,6 +46,7 @@ def filer_median(matrix):
                    padded_matrix[x-1,y+1],
                    padded_matrix[x,y+1],
                    padded_matrix[x+1,y+1]]
+            arr = np.sort(arr)
             new_padded_matrix[x,y] = arr[4]            
     new_unpadded_matrix = np.delete(new_padded_matrix, lx-1, 0)
     new_unpadded_matrix = np.delete(new_unpadded_matrix, ly-1, 1)
