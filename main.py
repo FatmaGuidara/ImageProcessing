@@ -29,6 +29,7 @@ matrix = readImagePgm('pic1.pgm')
 
 noise = noise(matrix)
 
-writeImagePgm(filer_moy(noise), 640, 480, 255, 'moy_filtered_pic1.pgm')
+# writeImagePgm(filer_moy(noise), 640, 480, 255, 'moy_filtered_pic1.pgm')
+writeImagePgm(filer_median(noise), 640, 480, 255, 'median_filtered_pic1.pgm')
 
 # %%
