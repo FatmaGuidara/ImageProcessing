@@ -2,6 +2,7 @@
 from read_write_file import *
 from histograms import *
 from contrast import *
+from filter import *
 import matplotlib.pyplot as plt
 
 matrix = readImagePgm('pic1.pgm')
@@ -24,6 +25,10 @@ matrix = readImagePgm('pic1.pgm')
 
 # writeImagePgm(linear_transformation(matrix), 640, 480, 255, 'linear_transformed_contrast_pic1.pgm')
 
-writeImagePgm(saturated_transformation(matrix, 150, 220), 640, 480, 255, 'saturated_transformed_contrast_pic1.pgm')
+# writeImagePgm(saturated_transformation(matrix, 150, 220), 640, 480, 255, 'saturated_transformed_contrast_pic1.pgm')
+
+noise = noise(matrix)
+
+writeImagePgm(filer_moy(noise), 640, 480, 255, 'moy_filtered_pic1.pgm')
 
 # %%
