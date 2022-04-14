@@ -1,6 +1,7 @@
 #%%
 from read_write_file import *
 from histograms import *
+from contrast import *
 import matplotlib.pyplot as plt
 
 matrix = readImagePgm('pic1.pgm')
@@ -19,5 +20,10 @@ matrix = readImagePgm('pic1.pgm')
 
 # matrix_eq, hist_transform = histogram_equalization(matrix)
 # writeImagePgm(matrix_eq, 640, 480, 255, "pic1_equalized.pgm")
+
+
+# writeImagePgm(linear_transformation(matrix), 640, 480, 255, 'linear_transformed_contrast_pic1.pgm')
+
+writeImagePgm(saturated_transformation(matrix, 150, 220), 640, 480, 255, 'saturated_transformed_contrast_pic1.pgm')
 
 # %%
