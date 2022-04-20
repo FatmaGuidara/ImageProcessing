@@ -3,6 +3,7 @@ from read_write_file import *
 from histograms import *
 from contrast import *
 from filter import *
+from thresholding import *
 import matplotlib.pyplot as plt
 
 matrix = readImagePgm('pic1.pgm')
@@ -35,12 +36,11 @@ noise = noise(matrix)
 # writeImagePgm(filer_moy(matrix), 640, 480, 255, 'moy_filtered_pic1_without_noise.pgm')
 # writeImagePgm(filer_median(matrix), 640, 480, 255, 'median_filtered_pic1_without_noise.pgm')
 
-print(signal_to_Noise_Ratio(matrix,filer_median(noise)))
-print(signal_to_Noise_Ratio(matrix,filer_moy(noise)))
+# print(signal_to_Noise_Ratio(matrix,filer_median(noise)))
+# print(signal_to_Noise_Ratio(matrix,filer_moy(noise)))
 
 
-
-
+writeImagePgm(thresholding(matrix, 100), 640, 480, 255, 'images/pic1_manual_thresholding.pgm')
 
 
 

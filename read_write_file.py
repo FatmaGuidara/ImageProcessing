@@ -34,7 +34,7 @@ def readImagePgm(file_name):
     for i in range(0,len(l)):
         l[i] = int(l[i]) 
     l= np.array(l)       
-    matrix = np.matrix(l.reshape((640, 480)))
+    matrix = np.matrix(l.reshape((lx, ly)))
     file.close()
     return matrix
 
