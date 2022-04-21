@@ -52,3 +52,9 @@ def dilatation(matrix):
     new_unpadded_matrix = np.delete(new_unpadded_matrix, 0, 0)
     new_unpadded_matrix = np.delete(new_unpadded_matrix, 0, 1)
     return new_unpadded_matrix
+
+def opening(matrix):
+    return erosion(dilatation(matrix))
+
+def closing(matrix):
+    return dilatation(erosion(matrix))
