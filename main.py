@@ -4,6 +4,7 @@ from histograms import *
 from contrast import *
 from filter import *
 from thresholding import *
+from binary_images_filters import *
 import matplotlib.pyplot as plt
 
 matrix = readImagePgm('pic1.pgm')
@@ -41,9 +42,11 @@ noise = noise(matrix)
 
 
 # writeImagePgm(thresholding(matrix, 100), 640, 480, 255, 'images/pic1_manual_thresholding.pgm')
-writeImagePgm(otsu(matrix), 640, 480, 255, 'images/pic1_otsu.pgm')
+# writeImagePgm(otsu(matrix), 640, 480, 255, 'images/pic1_otsu.pgm')
+binary_image = otsu(matrix)
 
-
+# writeImagePgm(erosion(matrix=binary_image), 640, 480, 255, 'images/pic1_erosion.pgm')
+writeImagePgm(dilatation(matrix=binary_image), 640, 480, 255, 'images/pic1_dilatation.pgm')
 
 
 # %%
