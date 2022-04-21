@@ -40,7 +40,8 @@ noise = noise(matrix)
 # print(signal_to_Noise_Ratio(matrix,filer_moy(noise)))
 
 
-writeImagePgm(thresholding(matrix, 100), 640, 480, 255, 'images/pic1_manual_thresholding.pgm')
+# writeImagePgm(thresholding(matrix, 100), 640, 480, 255, 'images/pic1_manual_thresholding.pgm')
+writeImagePgm(otsu(matrix), 640, 480, 255, 'images/pic1_otsu.pgm')
 
 
 
