@@ -7,7 +7,7 @@ def pad(matrix):
     matrix_padded = np.pad(matrix, pad_width=1, mode='constant', constant_values=0)
     return matrix_padded
 
-def erosion(matrix):
+def dilataion(matrix):
     padded_matrix = pad(matrix)
     lx,ly = np.shape(padded_matrix)
     new_padded_matrix = np.zeros((lx,ly)).astype(int)
@@ -30,7 +30,7 @@ def erosion(matrix):
     new_unpadded_matrix = np.delete(new_unpadded_matrix, 0, 1)
     return new_unpadded_matrix
 
-def dilatation(matrix):
+def erosion(matrix):
     padded_matrix = pad(matrix)
     lx,ly = np.shape(padded_matrix)
     new_padded_matrix = np.zeros((lx,ly)).astype(int)
