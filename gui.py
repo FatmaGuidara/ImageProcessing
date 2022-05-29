@@ -13,13 +13,12 @@ from filter import *
 from thresholding import *
 from binary_images_filters import *
 
-
-# np.set_printoptions(threshold=sys.maxsize)
-
 ctypes.windll.shcore.SetProcessDpiAwareness(True)
 
 root = Tk()
 ttk.Style().configure("TButton", justify=CENTER)
+p1 = PhotoImage(file = 'icon.png')
+root.iconphoto(False, p1)
 
 # Global variables
 gui_width = 1385
@@ -36,8 +35,6 @@ mean = 0
 stdev = 0
 
 root.title("Image processing")
-# root.geometry(f"{gui_width}x{gui_height}")
-# root.resizable(False, False)
 root.minsize(gui_width, gui_height)
 
 
@@ -64,7 +61,7 @@ def open_popup_input(text):
 
 
 def draw_before_canvas():
-    global original_img, ip_file, density_global
+    global original_img, ip_file, density_global, mean, stdev
     original_img, density = readImagePgm(ip_file)
     density_global = density
     original_img = np.matrix(original_img)
@@ -76,6 +73,7 @@ def draw_before_canvas():
         anchor="center",
     )
     before_canvas.img = img
+    mean, stdev = mean_stdev(original_img)
 
 
 def draw_after_canvas(mimg):
@@ -93,7 +91,7 @@ def draw_after_canvas(mimg):
 
 
 def load_file():
-    global ip_file
+    global ip_file, mean, stdev
     ip_file = filedialog.askopenfilename(
         title="Open an image file",
         initialdir=".",
@@ -137,6 +135,18 @@ def input_popup_thres():
     user_arg = int(user_arg)
     return user_arg
 
+def open_popup_mean():
+   top= Toplevel(root)
+   top.geometry("500x200")
+   top.title("Mean")
+   Label(top, text= f'{mean}', font=('Arial 18 bold')).place(x=100,y=80)
+
+def open_popup_stdev():
+   top= Toplevel(root)
+   top.geometry("500x200")
+   top.title("Standard Deviation")
+   Label(top, text= f'{stdev}', font=('Arial 18 bold')).place(x=100,y=80)
+
 
 # frames
 left_frame = ttk.LabelFrame(root, text="Original Image", labelanchor=N)
@@ -152,13 +162,8 @@ right_frame.pack(fill=BOTH, side=LEFT, padx=10, pady=10, expand=1)
 before_canvas = Canvas(left_frame, bg="white", width=512, height=512)
 before_canvas.pack(expand=1)
 
-##
-if(original_img):
-    mean, stdev = mean_stdev(original_img)
-root.title("Text Widget Example")
 
-text = Text(root, height=8)
-text.pack()
+# mean, stdev = mean_stdev(original_img)
 
 
 browse_btn = ttk.Button(left_frame, text="Browse", command=load_file)
@@ -337,5 +342,12 @@ ttk.Button(
     scrollable_algo_frame, text="Fermeture", width=30, command=fermeture
 ).pack(expand=1, padx=5, pady=2, ipady=2)
 
+ttk.Button(
+    scrollable_algo_frame, text="Mean", width=30, command=open_popup_mean
+).pack(expand=1, padx=5, pady=2, ipady=2)
+
+ttk.Button(
+    scrollable_algo_frame, text="Standard Deviation", width=30, command=open_popup_stdev
+).pack(expand=1, padx=5, pady=2, ipady=2)
 
 root.mainloop()
