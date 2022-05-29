@@ -4,6 +4,7 @@ import math
 
 def noise(matrix):
     matrix = np.matrix(matrix)
+    shape = np.shape(matrix)
     arr = (np.asarray(matrix)).flatten()
     for i in range(len(arr)):
         r = random.randint(0,20)
@@ -11,7 +12,7 @@ def noise(matrix):
             arr[i] = 0
         elif(r==20):
             arr[i]=255
-    matrix = np.matrix(arr.reshape((640, 480)))
+    matrix = np.matrix(arr.reshape(shape))
     return matrix
 
 def pad(matrix):

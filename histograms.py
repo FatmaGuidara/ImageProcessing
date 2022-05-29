@@ -39,7 +39,7 @@ def histogram_equalization(matrix):
         s = ((255)/float(M*N))*histC[z]
         matrix_eq[ np.where(matrix == z) ] = s
         hist_transform[z] = s
-    return (matrix_eq, hist_transform)
+    return (matrix_eq)
 
 
 

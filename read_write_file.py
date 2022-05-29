@@ -22,10 +22,10 @@ def readImagePgm(file_name):
         exit()
     del(l[0])
     
-    lx = int(l[0])
+    ly = int(l[0])
     del(l[0])
 
-    ly = int(l[0])
+    lx = int(l[0])
     del(l[0])
 
     density = int(l[0])
@@ -36,7 +36,7 @@ def readImagePgm(file_name):
     l= np.array(l)       
     matrix = np.matrix(l.reshape((lx, ly)))
     file.close()
-    return matrix
+    return matrix, density
 
 def writeImagePgm(m, lx, ly, density, output_file):
     file = open(output_file, "w")
