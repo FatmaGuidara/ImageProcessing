@@ -147,6 +147,24 @@ def open_popup_stdev():
    top.title("Standard Deviation")
    Label(top, text= f'{stdev}', font=('Arial 18 bold')).place(x=100,y=80)
 
+def open_popup_snr_median():
+    output = filer_median(original_img)
+    snr = signal_to_Noise_Ratio(original_img, output)
+    top= Toplevel(root)
+    top.geometry("500x200")
+    top.title("SNR / Median Filter")
+    Label(top, text= f'{snr}', font=('Arial 18 bold')).place(x=100,y=80)
+
+    
+def open_popup_snr_avg():
+    output = filer_moy(original_img)
+    snr = signal_to_Noise_Ratio(original_img, output)
+    top= Toplevel(root)
+    top.geometry("500x200")
+    top.title("SNR / Average Filter")
+    Label(top, text= f'{snr}', font=('Arial 18 bold')).place(x=100,y=80)
+    
+
 
 # frames
 left_frame = ttk.LabelFrame(root, text="Original Image", labelanchor=N)
@@ -348,6 +366,14 @@ ttk.Button(
 
 ttk.Button(
     scrollable_algo_frame, text="Standard Deviation", width=30, command=open_popup_stdev
+).pack(expand=1, padx=5, pady=2, ipady=2)
+
+ttk.Button(
+    scrollable_algo_frame, text="SNR / Median Filter", width=30, command=open_popup_snr_median
+).pack(expand=1, padx=5, pady=2, ipady=2)
+
+ttk.Button(
+    scrollable_algo_frame, text="SNR / Average Filter", width=30, command=open_popup_snr_avg
 ).pack(expand=1, padx=5, pady=2, ipady=2)
 
 root.mainloop()
