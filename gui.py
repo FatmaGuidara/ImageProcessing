@@ -281,6 +281,10 @@ def median_filter():
     output = filer_median(original_img)
     draw_after_canvas(output)  
 
+def edge_detector():
+    output = high_boost(original_img)
+    draw_after_canvas(output)      
+
 def thresholdings():
     thres = input_popup_thres()
     output = thresholding(original_img, thres)
@@ -337,6 +341,10 @@ ttk.Button(
 ).pack(expand=1, padx=5, pady=2, ipady=2)
 
 ttk.Button(
+    scrollable_algo_frame, text="Edge Detector", width=30, command=edge_detector
+).pack(expand=1, padx=5, pady=2, ipady=2)
+
+ttk.Button(
     scrollable_algo_frame, text="Thresholing", width=30, command=thresholdings
 ).pack(expand=1, padx=5, pady=2, ipady=2)
 
@@ -353,11 +361,11 @@ ttk.Button(
 ).pack(expand=1, padx=5, pady=2, ipady=2)
 
 ttk.Button(
-    scrollable_algo_frame, text="Ouverture", width=30, command=ouverture
+    scrollable_algo_frame, text="Opening", width=30, command=ouverture
 ).pack(expand=1, padx=5, pady=2, ipady=2)
 
 ttk.Button(
-    scrollable_algo_frame, text="Fermeture", width=30, command=fermeture
+    scrollable_algo_frame, text="Closing", width=30, command=fermeture
 ).pack(expand=1, padx=5, pady=2, ipady=2)
 
 ttk.Button(

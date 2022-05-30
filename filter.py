@@ -72,4 +72,12 @@ def signal_to_Noise_Ratio(matrix, filtered_matrix):
             
     return math.sqrt(S/B)
     
+def high_boost(matrix):
+    matrix = np.matrix(matrix)
+    image_filtered = filer_moy(matrix)
+    x, y = matrix.shape
+    new_image = np.zeros((x,y)).astype(int)
+    new_image = np.matrix(new_image)
+    new_image = abs(matrix - image_filtered)
+    return new_image
 
